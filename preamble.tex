@@ -1,0 +1,158 @@
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\usepackage[sfdefault,lf]{carlito}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[table]{xcolor}
+\usepackage{totcount}
+\usepackage{float}
+\usepackage{datetime}
+
+% Packages configurations
+\regtotcounter{table}
+\regtotcounter{figure}
+\geometry{
+  letterpaper,
+  %showframe,
+  top=1.0in,
+  bottom=1.0in,
+  left=1.25in,
+  right=1.25in,
+  headheight=15pt,
+}
+\pagestyle{fancy}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\lstset{
+  language=JavaScript,
+  backgroundcolor=\color{lightgray},
+  extendedchars=true,
+  basicstyle=\footnotesize\ttfamily,
+  showstringspaces=false,
+  showspaces=false,
+  numbers=left,
+  numberstyle=\footnotesize,
+  numbersep=9pt,
+  tabsize=2,
+  breaklines=true,
+  showtabs=false,
+  captionpos=b
+}
+
+% Document configurations
+\hbadness=20000
+\setlength\parskip{1em}
+\setlength\parindent{15pt}
+\renewcommand*\oldstylenums[1]{\carlitoOsF #1}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\cfoot{\thepage}
+\graphicspath{{figures/}}
+
+% Macros
+\newcommand{\printif}[3]{\ifcsname @#1\endcsname#2\else#3\fi}
+
+% Document beggining
+\newif\ifcover
+\covertrue
+\AtBeginDocument{
+  \ifcover
+    \renewcommand\listtablename{Índice de tablas}
+    \renewcommand\tablename{Tabla}
+    \maketitle
+  \fi
+}
+
+% Report definitions
+\makeatletter
+  \def\institution#1{\gdef\@institution{#1}}
+  \def\classcode#1{\gdef\@classcode{#1}}
+  \def\classname#1{\gdef\@classname{#1}}
+  \def\classsemester#1{\gdef\@classsemester{#1}}
+  \def\classparallel#1{\gdef\@classparallel{#1}}
+  \def\doctitle#1{\gdef\@doctitle{#1}}
+  \def\docsubtitle#1{\gdef\@docsubtitle{#1}}
+  \def\version#1{\gdef\@version{#1}}
+  \def\astudentname#1{\gdef\@astudentname{#1}}
+  \def\astudentlastname#1{\gdef\@astudentlastname{#1}}
+  \def\astudentrol#1{\gdef\@astudentrol{#1}}
+  \def\astudentemail#1{\gdef\@astudentemail{#1}}
+  \def\bstudentname#1{\gdef\@bstudentname{#1}}
+  \def\bstudentlastname#1{\gdef\@bstudentlastname{#1}}
+  \def\bstudentrol#1{\gdef\@bstudentrol{#1}}
+  \def\bstudentemail#1{\gdef\@bstudentemail{#1}}
+  \def\cstudentname#1{\gdef\@cstudentname{#1}}
+  \def\cstudentlastname#1{\gdef\@cstudentlastname{#1}}
+  \def\cstudentrol#1{\gdef\@cstudentrol{#1}}
+  \def\cstudentemail#1{\gdef\@cstudentemail{#1}}
+\makeatother
+  % Setting fancy headers
+\makeatletter
+  \fancyhead[LE]{\printif{classcode}{\@classcode\ - }{}\@classsemester}
+  \fancyhead[RE]{\@doctitle}
+  \fancyhead[LO]{\@astudentlastname\printif{bstudentlastname}{, \@bstudentlastname}{}\printif{cstudentlastname}{, \@cstudentlastname}{}}
+  \fancyhead[RO]{\printif{version}{\@version\ - }{}\the\year/\two@digits{\month}/\two@digits{\day}}
+\makeatother
+
+% Redefinning titlepage
+\makeatletter
+\def\@maketitle{
+  % Portada
+  \thispagestyle{empty}
+  \noindent\includegraphics[width=.475 \textwidth]{../latex-report-001/logo-\@institution}
+  \vfill
+  \vfill
+  \begin{center}
+    \printif{docsubtitle}{\fontsize{25}{25}\selectfont \@docsubtitle\\[3em]}{}
+    {\fontsize{35}{35}\selectfont \@doctitle}\\[2.0em]
+    {\fontsize{15}{15}\selectfont \printif{classcode}{\@classcode\ - }{}\@classsemester\printif{classparallel}{ - \@classparallel}{}}\\[10pt]
+    {\fontsize{20}{20}\selectfont \@classname}\\[5pt]
+    {\fontsize{15}{15}\selectfont \today\printif{version}{ - \@version}{}}
+  \end{center}
+  \vfill
+  \vfill
+  \vfill
+  \begin{flushright}
+    \begin{tabular}{r|l}
+      \printif{astudentname}{\@astudentname\ \@astudentlastname & \@astudentrol \\ \@astudentemail & \\}{}
+      \printif{bstudentname}{\@bstudentname\ \@bstudentlastname & \@bstudentrol \\ \@bstudentemail & \\}{}
+      \printif{cstudentname}{\@cstudentname\ \@cstudentlastname & \@cstudentrol \\ \@cstudentemail & \\}{}
+    \end{tabular}
+  \end{flushright}
+  \newpage
+  % Índice
+  \tableofcontents
+  % Tablas
+  \ifnum \totvalue{table}>0
+    \listoftables
+  \fi
+  % Figuras
+  \ifnum \totvalue{figure}>0
+    \listoffigures
+  \fi
+  \newpage
+}
+\makeatother
