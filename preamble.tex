@@ -124,6 +124,10 @@
     stepnumber=1,
     numbersep=5pt,
 }
+\lstdefinestyle{pythonstyle}{
+    language=python
+}
+\lstnewenvironment{pythoncode}{\lstset{style=pythonstyle}}{}
 \lstdefinestyle{bashstyle}{
     language=bash
 }
@@ -132,6 +136,10 @@
     language=xml
 }
 \lstnewenvironment{xmlcode}{\lstset{style=xmlstyle}}{}
+\lstdefinestyle{javastyle}{
+    language=java
+}
+\lstnewenvironment{javacode}{\lstset{style=javastyle}}{}
 \lstdefinestyle{plainstyle}{
 }
 \lstnewenvironment{plaincode}{\lstset{style=plainstyle}}{}
