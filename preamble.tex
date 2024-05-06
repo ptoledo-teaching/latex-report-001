@@ -73,8 +73,8 @@
 
 % Tables configuration
 \regtotcounter{table}
-\renewcommand\tablename{Tabla}
-\renewcommand\listtablename{Índice de tablas}
+
+\captionsetup[table]{name=Tabla}
 \captionsetup[table]{format=elements, singlelinecheck=false, margin=0pt, font={sf,footnotesize}}
 
 % Figures configuration
@@ -86,7 +86,6 @@
 \DeclareFloatingEnvironment[fileext=loc]{code}
 \regtotcounter{lstlisting}
 \renewcommand\lstlistingname{Código}
-\renewcommand\lstlistlistingname{Índice de fragmentos de codigo}
 \captionsetup[lstlisting]{format=elements, singlelinecheck=false, margin=0pt, font={sf,footnotesize}}
 \lstset{
     inputencoding=utf8,
@@ -140,6 +139,9 @@
 % Custom titlepage
 \makeatletter
 \def\@maketitle{
+  % Configurations
+  \renewcommand\listtablename{Índice de tablas}
+  \renewcommand\lstlistlistingname{Índice de fragmentos de codigo}
   % Cover
   \thispagestyle{empty}
   \noindent\includegraphics[width=.475 \textwidth]{../latex-report-001/logo-\@institution}
