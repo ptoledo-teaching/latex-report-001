@@ -24,6 +24,8 @@
     itemsep=0pt, 
     parsep=0pt    % space between paragraphs within an item
 }
+% Section breaks
+\pretocmd{\section}{\clearpage}{}{}
 
 % Watermark %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\setupwatermark}[1]{% 
