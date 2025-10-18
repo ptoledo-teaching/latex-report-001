@@ -1,34 +1,87 @@
-\ProvidesClass{pt-report}[2021/07/01 v1.0 PT Report Class]
+%%
+%% pt-report.cls
+%% Report document class for ptoledo-teaching
+%%
+%% Author: Pedro Toledo Correa
+%% Repo: https://github.com/ptoledo-teaching/pt-commons
+%% License: LaTeX Project Public License 1.3c or later
+%% Created: 2021-07-01
+%% Updated: 2025-10-18
+%% Version: v0.1
+%%
+%% -----------------------------------------------------------------
+%% This work may be distributed and/or modified under
+%% the conditions of the LaTeX Project Public License,
+%% version 1.3c or later. The latest version is available at:
+%%     https://www.latex-project.org/lppl.txt
+%% -----------------------------------------------------------------
+%%
+
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{pt-report}[2025/10/18 v0.1 PT Report Class]
+\makeatletter
 
 % Class handling %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Pass user options to pt-commons
-\DeclareOption*{%
-    \PassOptionsToClass{\CurrentOption}{pt-commons}
-}
+% Declare language options for pt-commons
+\DeclareOption{spanish}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{portuguese}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{french}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{nominted}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+% Pass all other options to base article class
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+% Default options
+\PassOptionsToClass{letterpaper,12pt}{article}
 \ProcessOptions\relax
-% Fixed options
-\PassOptionsToClass{letterpaper, 12pt}{article}
-% Loading class
+% Load base class
 \LoadClass{article}
-% Loading pt-commons
+% Load pt-commons package
 \RequirePackage{pt-commons}
 
 % Page and text formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Font sizing
-\RequirePackage{microtype}
-\setlist{
-    topsep=8pt,   % space above and below list
-    itemsep=0pt, 
-    parsep=0pt    % space between paragraphs within an item
+% Page geometry
+\geometry{
+    left=1.0in,
+    right=1.0in,
+    top=1.0in,
+    bottom=1.0in,
+    includefoot
 }
-% Section breaks
+% Paragraph indentation
+\setlength{\parindent}{0.5in}
+% Line spacing
+\sloppy
+% Lists spacing (use enumitem rather than redefining LaTeX internals)
+\setlist[itemize,1]{
+    leftmargin=21pt,
+    labelsep=6pt,
+    topsep=8pt,
+    parsep=0pt,
+    itemsep=0pt
+}
+\setlist[itemize,2]{
+    leftmargin=12pt,
+    topsep=0pt
+}
+\setlist[enumerate,1]{
+    leftmargin=21pt,
+    labelsep=6pt,
+    topsep=8pt,
+    parsep=0pt,
+    itemsep=0pt
+}
+\setlist[enumerate,2]{
+    leftmargin=12pt,
+    topsep=0pt
+}
+% Section breaks - each section starts on a new page
 \pretocmd{\section}{\clearpage}{}{}
 
 % Watermark %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\setupwatermark}[1]{% 
+
+\renewcommand{\setupwatermark}[1]{%
     \newlength{\@watermarkheight}
     \newlength{\@watermarklen}
     \newlength{\@watermarktargetlen}
@@ -61,7 +114,7 @@
     \SetWatermarkHorCenter{0.5\paperwidth}
 }
 
-% Template pages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Custom titlepage
 \renewcommand{\maketitle}{
@@ -69,12 +122,12 @@
     \begin{titlepage}
         \newpage
         \vbox to 30pt{%
-                \ifx\temp\@empty
-                    \vfil % nothing, just stretch inside
-                \else
-                    \includegraphics[height=30pt]{\pt@logo}%
-                \fi
-            }%
+            \ifx\temp\@empty
+                \vfil % nothing, just stretch inside
+            \else
+                \includegraphics[height=30pt]{\pt@logo}%
+            \fi
+        }%
         \vfill
         \begin{center}
             {\Huge\pt@title}\\%
@@ -99,3 +152,5 @@
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AtBeginEnvironment{tblr}{\footnotesize}
+
+\makeatother

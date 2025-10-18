@@ -1,0 +1,369 @@
+%%
+%% PT Report Template
+%% Full-featured template demonstrating all capabilities
+%%
+%% Author: Pedro Toledo Correa
+%% Version: 0.1
+%% Date: 2025-10-18
+%%
+
+\documentclass{pt-report}
+% Available options:
+% - Language: spanish (default), english, portuguese, french
+% - Code: nominted (disable minted, use verbatim)
+% - Font size: 10pt, 11pt, 12pt (default)
+
+% Document metadata
+\title{Informe Técnico del Proyecto}
+\titlesub{Sistema de Gestión Académica}
+\titlesubsub{Informe Final}
+
+% Version control
+\version{1.0}
+\build{auto}  % Use 'auto' for automatic build counting or specify a number
+% \watermark{BORRADOR}  % Uncomment to add watermark
+
+% Authors (add as many as needed)
+\addauthor{Pedro}{Toledo}{pedro.toledo@universidad.cl}{}
+
+% Optional: Add institutional logo
+% \logo{figures/logo.png}
+
+% Academic/Class information (optional)
+\classcode{IWI-131}
+\classname{Programación}
+\classsemester{Primer Semestre 2025}
+
+% Institution information (optional)
+\department{Departamento de Informática}
+\school{Escuela de Ingeniería}
+\university{Universidad Técnica Federico Santa María}
+
+\begin{document}
+
+\maketitle
+
+% Table of contents
+\tableofcontents
+\ptlistoffigures  % Only shown if figures exist
+\ptlistoftables   % Only shown if tables exist
+\ptlistofcodes    % Only shown if code listings exist
+
+\section{Introducción}
+
+Esta es una plantilla completa que demuestra todas las capacidades de la clase
+\inlinecode{pt-report}. El documento está configurado en formato de una columna
+con márgenes de 1 pulgada y cada sección comienza en una nueva página.
+
+\subsection{Características Principales}
+
+La clase \inlinecode{pt-report} extiende la clase estándar \inlinecode{article}
+de \LaTeX{} con las siguientes características:
+
+\begin{itemize}
+    \item Diseño profesional de una columna con márgenes cómodos
+    \item Generación automática de página de título
+    \item Gestión avanzada de autores con afiliaciones
+    \item Control de versiones y numeración de compilaciones
+    \item Saltos de página automáticos entre secciones
+    \item Formato personalizado de secciones
+    \item Cajas de resaltado para contenido importante
+    \item Todas las características del paquete \inlinecode{pt-commons}
+\end{itemize}
+
+\subsection{Opciones de la Clase}
+
+El documento puede configurarse con diferentes opciones:
+
+\begin{enumerate}
+    \item \textbf{Idiomas:} spanish, english, portuguese, french
+    \item \textbf{Código:} nominted (desactiva minted)
+    \item \textbf{Tamaño de fuente:} 10pt, 11pt, 12pt (por defecto)
+\end{enumerate}
+
+\subsection{Estructura del Informe}
+
+Este informe está organizado de la siguiente manera:
+
+\begin{description}
+    \item[Sección 1:] Introducción y contexto del proyecto
+    \item[Sección 2:] Marco teórico y conceptos fundamentales
+    \item[Sección 3:] Metodología empleada en el desarrollo
+    \item[Sección 4:] Resultados obtenidos y análisis
+    \item[Sección 5:] Conclusiones y trabajo futuro
+\end{description}
+
+\section{Marco Teórico}
+
+\subsection{Fundamentos Conceptuales}
+
+El marco teórico establece las bases conceptuales sobre las cuales se desarrolla
+el proyecto. En esta sección se presentan los conceptos fundamentales necesarios
+para comprender el trabajo realizado.
+
+\begin{highlightbox}
+    \textbf{Concepto Importante:} La arquitectura del sistema se basa en el patrón
+    Model-View-Controller (MVC), que separa la lógica de negocio de la presentación
+    y permite un desarrollo más modular y mantenible.
+\end{highlightbox}
+
+\subsection{Estado del Arte}
+
+El estado del arte presenta una revisión de los trabajos previos relacionados
+con el tema del informe.
+
+\subsubsection{Trabajos Relacionados}
+
+Diversos autores han abordado problemas similares:
+
+\begin{itemize}
+    \item Smith et al. (2023) presentaron un sistema de gestión basado en microservicios
+    \item González y Pérez (2024) propusieron una arquitectura escalable
+    \item Martínez (2024) desarrolló un framework de pruebas automatizadas
+\end{itemize}
+
+\subsection{Herramientas y Tecnologías}
+
+Las principales herramientas y tecnologías utilizadas se resumen en la siguiente tabla:
+
+\begin{center}
+    \begin{tblr}{colspec={|l|l|l|}}
+        \hline
+        \tableheader
+        Categoría            & Herramienta & Versión \\
+        \hline
+        \hline
+        Backend              & Python      & 3.11    \\
+        \hline
+        Frontend             & React       & 18.2    \\
+        \hline
+        Base de Datos        & PostgreSQL  & 15.0    \\
+        \hline
+        Control de Versiones & Git         & 2.40    \\
+        \hline
+        Contenedores         & Docker      & 24.0    \\
+        \hline
+    \end{tblr}
+\end{center}
+
+\section{Metodología}
+
+\subsection{Enfoque Metodológico}
+
+La metodología empleada consta de las siguientes etapas principales:
+
+\begin{enumerate}
+    \item \textbf{Análisis de Requisitos:} Identificación y documentación de los requisitos funcionales y no funcionales del sistema.
+    \item \textbf{Diseño:} Creación de la arquitectura del sistema y diseño de componentes individuales.
+    \item \textbf{Implementación:} Desarrollo del código fuente siguiendo las mejores prácticas.
+    \item \textbf{Pruebas:} Verificación y validación del sistema mediante pruebas unitarias, de integración y de sistema.
+    \item \textbf{Despliegue:} Puesta en producción del sistema en el ambiente objetivo.
+\end{enumerate}
+
+\subsection{Análisis de Requisitos}
+
+Los requisitos se clasificaron en dos categorías principales:
+
+\paragraph{Requisitos Funcionales}
+
+Los requisitos funcionales especifican lo que el sistema debe hacer:
+
+\begin{itemize}
+    \item RF-01: El sistema debe permitir el registro de usuarios
+    \item RF-02: El sistema debe gestionar cursos y horarios
+    \item RF-03: El sistema debe generar reportes personalizados
+    \item RF-04: El sistema debe enviar notificaciones por email
+\end{itemize}
+
+\paragraph{Requisitos No Funcionales}
+
+Los requisitos no funcionales especifican cómo debe comportarse el sistema:
+
+\begin{itemize}
+    \item RNF-01: El sistema debe responder en menos de 2 segundos
+    \item RNF-02: El sistema debe soportar 1000 usuarios concurrentes
+    \item RNF-03: El sistema debe tener 99.9\% de disponibilidad
+    \item RNF-04: El sistema debe cumplir con la ley de protección de datos
+\end{itemize}
+
+\subsection{Diseño del Sistema}
+
+El diseño del sistema se basa en una arquitectura de tres capas:
+
+\begin{description}
+    \item[Capa de Presentación:] Interfaz de usuario desarrollada en React
+    \item[Capa de Lógica de Negocio:] API REST desarrollada en Python con Flask
+    \item[Capa de Datos:] Base de datos PostgreSQL con esquema normalizado
+\end{description}
+
+La comunicación entre capas se realiza mediante API REST con formato JSON.
+
+\subsection{Implementación}
+
+La implementación siguió un enfoque iterativo e incremental. A continuación
+se muestra un ejemplo del código principal del servidor:
+
+\begin{ptprintcode}{python}
+    from flask import Flask, jsonify, request
+    from flask_cors import CORS
+    from database import db
+    from models import User, Course
+
+    app = Flask(__name__)
+    CORS(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/academic'
+    db.init_app(app)
+
+    @app.route('/api/users', methods=['GET'])
+    def get_users():
+    """Obtiene la lista de todos los usuarios"""
+    users = User.query.all()
+    return jsonify([user.to_dict() for user in users])
+
+    @app.route('/api/courses', methods=['GET'])
+    def get_courses():
+    """Obtiene la lista de todos los cursos"""
+    courses = Course.query.all()
+    return jsonify([course.to_dict() for course in courses])
+
+    if __name__ == '__main__':
+    app.run(debug=True, port=5000)
+\end{ptprintcode}
+
+\subsection{Pruebas}
+
+Se implementaron tres niveles de pruebas:
+
+\begin{enumerate}
+    \item \textbf{Pruebas Unitarias:} Verifican el funcionamiento de componentes individuales
+    \item \textbf{Pruebas de Integración:} Verifican la interacción entre componentes
+    \item \textbf{Pruebas de Sistema:} Verifican el funcionamiento completo del sistema
+\end{enumerate}
+
+La cobertura de código alcanzada fue del 87\%, superando el objetivo del 80\%.
+
+\section{Resultados}
+
+\subsection{Resultados Cuantitativos}
+
+Los resultados cuantitativos del proyecto se resumen en la siguiente tabla:
+
+\begin{center}
+    \begin{tblr}{colspec={|l|c|c|c|}}
+        \hline
+        \tableheader
+        Métrica                  & Objetivo & Obtenido & Cumplimiento                        \\
+        \hline
+        \hline
+        Tiempo de respuesta (ms) & $< 2000$ & 1200     & \textcolor{ptgreen}{\faIcon{check}} \\
+        \hline
+        Usuarios concurrentes    & $> 1000$ & 1500     & \textcolor{ptgreen}{\faIcon{check}} \\
+        \hline
+        Disponibilidad (\%)      & $> 99.9$ & 99.95    & \textcolor{ptgreen}{\faIcon{check}} \\
+        \hline
+        Cobertura de código (\%) & $> 80$   & 87       & \textcolor{ptgreen}{\faIcon{check}} \\
+        \hline
+        Líneas de código         & N/A      & 12,500   & N/A                                 \\
+        \hline
+    \end{tblr}
+\end{center}
+
+Todos los objetivos cuantitativos fueron cumplidos satisfactoriamente.
+
+\subsection{Resultados Cualitativos}
+
+Los resultados cualitativos incluyen:
+
+\begin{itemize}
+    \item Interfaz de usuario intuitiva y fácil de usar
+    \item Código fuente bien documentado y mantenible
+    \item Arquitectura escalable que permite crecimiento futuro
+    \item Buena aceptación por parte de los usuarios finales
+\end{itemize}
+
+\subsection{Análisis de Resultados}
+
+El análisis de los resultados obtenidos muestra que:
+
+\begin{highlightbox}
+    \textbf{Hallazgo Principal:} El sistema desarrollado cumple con todos los
+    requisitos establecidos y supera las expectativas en términos de rendimiento
+    y escalabilidad. La arquitectura basada en microservicios ha demostrado ser
+    una elección acertada para el proyecto.
+\end{highlightbox}
+
+La comparación con sistemas similares muestra que nuestra solución ofrece
+mejor rendimiento en un 35\% y mayor escalabilidad.
+
+\subsection{Fórmulas y Ecuaciones}
+
+El cálculo del tiempo de respuesta promedio se realizó mediante:
+
+\begin{equation}
+    \overline{t} = \frac{1}{n} \sum_{i=1}^{n} t_i
+    \label{eq:tiempo-promedio}
+\end{equation}
+
+donde $t_i$ representa el tiempo de respuesta de la solicitud $i$ y $n$ es el
+número total de solicitudes.
+
+La desviación estándar del tiempo de respuesta es:
+
+\begin{equation}
+    \sigma = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (t_i - \overline{t})^2}
+    \label{eq:desviacion}
+\end{equation}
+
+Los resultados muestran una desviación estándar baja ($\sigma = 150$ ms),
+indicando consistencia en los tiempos de respuesta.
+
+\section{Conclusiones}
+
+\subsection{Conclusiones Generales}
+
+El proyecto ha cumplido exitosamente con todos los objetivos planteados:
+
+\begin{enumerate}
+    \item Se desarrolló un sistema completo y funcional de gestión académica
+    \item Se implementaron todas las funcionalidades requeridas
+    \item Se superaron las métricas de rendimiento establecidas
+    \item Se documentó exhaustivamente el proceso de desarrollo
+\end{enumerate}
+
+\subsection{Lecciones Aprendidas}
+
+Durante el desarrollo del proyecto se aprendieron varias lecciones importantes:
+
+\begin{itemize}
+    \item La planificación detallada al inicio ahorra tiempo en etapas posteriores
+    \item Las pruebas automatizadas son esenciales para mantener la calidad
+    \item La comunicación efectiva entre el equipo es fundamental
+    \item La documentación debe realizarse de forma continua, no al final
+\end{itemize}
+
+\subsection{Trabajo Futuro}
+
+Las siguientes mejoras se proponen para versiones futuras:
+
+\begin{enumerate}
+    \item Implementar autenticación mediante OAuth2
+    \item Agregar soporte para aplicaciones móviles nativas
+    \item Mejorar el sistema de notificaciones con push notifications
+    \item Implementar analíticas avanzadas con machine learning
+    \item Agregar soporte multiidioma en la interfaz
+\end{enumerate}
+
+\subsection{Reflexión Final}
+
+Este proyecto ha demostrado que es posible desarrollar sistemas complejos
+de alta calidad siguiendo metodologías ágiles y buenas prácticas de ingeniería
+de software. Los resultados obtenidos superan las expectativas iniciales y
+establecen una base sólida para futuros desarrollos.
+
+\begin{highlightbox}
+    \textbf{Reflexión:} El éxito del proyecto se debe principalmente al trabajo
+    en equipo, la planificación adecuada y el uso de tecnologías modernas y
+    probadas. La experiencia adquirida será invaluable para proyectos futuros.
+\end{highlightbox}
+
+\end{document}
