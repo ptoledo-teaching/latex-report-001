@@ -95,3 +95,7 @@
     \end{titlepage}
     \addtocounter{page}{1}
 }
+
+% Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtBeginEnvironment{tblr}{\footnotesize}
